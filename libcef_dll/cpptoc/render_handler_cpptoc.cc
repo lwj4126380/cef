@@ -297,8 +297,6 @@ render_handler_on_accelerated_paint(struct _cef_render_handler_t* self,
                                     void* shared_handle) {
   shutdown_checker::AssertNotShutdown();
 
-  // AUTO-GENERATED CONTENT - DELETE THIS COMMENT BEFORE MODIFYING
-
   DCHECK(self);
   if (!self)
     return;
@@ -311,8 +309,8 @@ render_handler_on_accelerated_paint(struct _cef_render_handler_t* self,
   if (dirtyRectsCount > 0 && !dirtyRects)
     return;
   // Verify param: shared_handle; type: simple_byaddr
-  DCHECK(shared_handle);
-  if (!shared_handle)
+  DCHECK(!new_texture || shared_handle);
+  if (new_texture && !shared_handle)
     return;
 
   // Translate param: dirtyRects; type: simple_vec_byref_const
